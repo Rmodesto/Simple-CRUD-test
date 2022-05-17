@@ -1,18 +1,13 @@
-const mongoose = require ('mongoose');
-
-const postSchema = new mongoose.Schema(
-    {
-
-    name: {
-        type: String,
-        required: [true, 'Please provide your name']
-    },
-    comment: {
-        type: String,
-        required: [true, 'Please provide a comment']
-    },
+const express = require('express');
+const { getPost, postComment } = require('../controllers/post');
+const router = express.Router();
 
 
-})
 
-module.exports = mongoose.model('post', postSchema);
+
+router.get('/blog', getPost)
+router.post('/blog', postComment)
+
+
+
+module.exports = router;
